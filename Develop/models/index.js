@@ -1,19 +1,20 @@
-const Traveller = require("./traveller.js");
-const Location = require("./location.js");
-const Trips = require("./trips.js");
+// import models
+const Product = require('./Product');
+const Category = require('./Category');
+const Tag = require('./Tag');
+const ProductTag = require('./ProductTag');
 
+// Products belongsTo Category
 
-Traveller.belongsToMany(Location, {
-  through: { mpdel: Trips,unique: false,},
-  foreignKey: "traveller_id",
-  onDelete: 'CASCADE',
-  as: 'planned_trips'
-});
-Location.belongsToMany(Traveller, {
-  through: { model: Trips,unique: false,},
-  foreignKey: "location_id",
-  onDelete: 'CASCADE',
-  as: 'location_travellers'
-});
+// Categories have many Products
 
-module.exports = { Traveller, Location, Trips };
+// Products belongToMany Tags (through ProductTag)
+
+// Tags belongToMany Products (through ProductTag)
+
+module.exports = {
+  Product,
+  Category,
+  Tag,
+  ProductTag,
+};
